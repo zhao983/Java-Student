@@ -26,15 +26,18 @@ public class Test {
 
         //printHelloWorld2();//会报错
 
+        Test t = new Test();
+        t.printHelloWorld2();
+
 
 
     }
 
     public static void printHelloWorld1(){
-        System.out.println("Hello WOrld!");
+        System.out.println("Hello World1!");
     }
 
     public void printHelloWorld2(){
-        System.out.println("Hello WOrld!");
+        System.out.println("Hello World2!");
     }
 }
