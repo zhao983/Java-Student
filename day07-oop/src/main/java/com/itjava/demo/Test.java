@@ -37,9 +37,6 @@ public class Test {
                 case "3":
                     SmartControl.control(jds[2]);
                     break;
-                case "4":
-                    SmartControl.control(jds[3]);
-                    break;
                 case "exit":
                     System.out.println("已退出该系统");
                     return;

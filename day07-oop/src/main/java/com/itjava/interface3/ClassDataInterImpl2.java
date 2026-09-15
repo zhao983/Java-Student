@@ -12,7 +12,7 @@ public class ClassDataInterImpl2 implements ClassDataInter{
     public void printStudent() {
         int boycount = 0;
         for(int i=0;i<stu.length;i++){
-            if(stu[i].getSex()=="男")
+            if("男".equals(stu[i].getSex()))
                 boycount++;
             System.out.println(stu[i].getName()+"\t"+stu[i].getSex()+"\t"+stu[i].getScore());
         }
@@ -31,13 +31,13 @@ public class ClassDataInterImpl2 implements ClassDataInter{
             if(max<stu[i].getScore()){
                 max=stu[i].getScore();
             }
-            if(min<stu[i].getScore()){
+            if(min>stu[i].getScore()){
                 min=stu[i].getScore();
             }
         }
         System.out.println("最高分为:"+max);
         System.out.println("最低分为:"+min);
-        System.out.println("去掉最高分和最低分后的平均分为:"+(sum/(stu.length-2)));
+        System.out.println("去掉最高分和最低分后的平均分为:"+((sum-max-min)/(stu.length-2)));
 
     }
 }
