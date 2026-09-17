@@ -8,8 +8,7 @@ public class Test {
         JFrame login =new JFrame("登录页面");  //窗口
         login.setSize(300,200);
         login.setLocationRelativeTo(null);  //居中显示
-        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //关闭窗口的同时关闭程序
-        login.setVisible(true);
+
 
         JPanel panel = new JPanel(); //面板
         login.add(panel); //把面板加到窗口上
@@ -55,9 +54,13 @@ public class Test {
 
             }
         });
-
-        //需要让窗口成为焦点
+        //推荐先把窗口内容搭完，最后再显示窗口。
+        login.setVisible(true);
+        //需要让窗口成为焦点  哪个组件拥有键盘焦点，哪个组件才容易收到键盘事件。
         login.requestFocus();
+        //关闭窗口的同时关闭程序
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
     }
 }

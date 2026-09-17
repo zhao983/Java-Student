@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ArrayListDemo1 {
     public static void main(String[] args) {
-        //目标：掌握ArratList集合的基本使用
+        //目标：掌握ArrayList集合的基本使用
 //        ArrayList name =new ArrayList<>();
         ArrayList<String> name = new ArrayList<>(); //在ArrayList后面加上<数据类型>,可以只让该集合只能传输这一个数据
         //添加数据

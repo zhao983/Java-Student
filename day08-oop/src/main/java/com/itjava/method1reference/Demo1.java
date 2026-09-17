@@ -1,4 +1,4 @@
-package com.itjava.methon1reference;
+package com.itjava.method1reference;
 
 import java.util.Arrays;
 

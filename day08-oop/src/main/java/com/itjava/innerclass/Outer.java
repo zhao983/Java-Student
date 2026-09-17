@@ -12,7 +12,7 @@ public class Outer {
         public void show() {
             System.out.println("内部类的show方法");
             //成员内部类可以直接访问外部类的静态成员变量
-            System.out.println(name);
+            System.out.println(Outer.name);
 //          System.out.println(Outer.name);  //或者这样写
         }
 

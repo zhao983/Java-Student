@@ -11,8 +11,7 @@ public class Test2 {
 //        login.setTitle("登录页面");
         login.setSize(300,200);
         login.setLocationRelativeTo(null);  //居中显示
-        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //关闭窗口的同时关闭程序
-        login.setVisible(true);
+
 
         JPanel panel = new JPanel(); //面板
         login.add(panel); //把面板加到窗口上
@@ -21,6 +20,11 @@ public class Test2 {
         panel.add(btn);
         //给按钮添加点击事件监听器
         btn.addActionListener(new MyActionListener(login));
+
+        //推荐先把窗口内容搭完，最后再显示窗口。
+        login.setVisible(true);
+        //关闭窗口的同时关闭程序
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
 
