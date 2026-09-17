@@ -1,0 +1,19 @@
+常用方法如下：
+方法	            作用	                        示例
+length()	获取字符串长度	                "abc".length() → 3
+charAt(index)	获取指定位置字符	        "abc".charAt(1) → 'b'
+equals()	比较字符串内容	                "abc".equals("abc") → true
+equalsIgnoreCase()	忽略大小写比较	        "abc".equalsIgnoreCase("ABC")
+contains()	是否包含某段字符串	            "hello".contains("ell")
+startsWith()	是否以某字符串开头	        "hello".startsWith("he")
+endsWith()	是否以某字符串结尾	            "hello".endsWith("lo")
+indexOf()	查找第一次出现的位置	        "hello".indexOf("l") → 2
+lastIndexOf()	查找最后一次出现的位置	    "hello".lastIndexOf("l") → 3
+substring()	截取字符串	                "hello".substring(1,4) → "ell"
+replace()	替换内容	                    "hello".replace("l","x")
+split()	按指定内容切割	                    "a,b,c".split(",")
+toUpperCase()	转大写	                "abc".toUpperCase()
+toLowerCase()	转小写	                "ABC".toLowerCase()
+trim()	去掉首尾空格	                    "  abc  ".trim()
+isEmpty()	是否是空字符串	                "".isEmpty()
+compareToIgnoreCase()  忽视大小写比较,用来判断“谁大谁小”
