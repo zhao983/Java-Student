@@ -1,0 +1,10 @@
+VK_ENTER      回车
+VK_SPACE      空格
+VK_ESCAPE     Esc
+VK_UP         上
+VK_DOWN       下
+VK_LEFT       左
+VK_RIGHT      右
+VK_A ~ VK_Z   字母
+VK_0 ~ VK_9   数字
+VK_F1 ~ VK_F12 功能键
