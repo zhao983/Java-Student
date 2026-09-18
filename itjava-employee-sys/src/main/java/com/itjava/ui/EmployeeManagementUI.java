@@ -18,14 +18,13 @@ public class EmployeeManagementUI extends JFrame {
     private DefaultTableModel tableModel;  //封装数据表格
     private TableRowSorter<DefaultTableModel> rowSorter; // 用于实现搜索过滤
     private static ArrayList<Employee> allEmployee = new ArrayList<>();
-    private static Employee[] employee = new Employee[2];  //数组的大小数字应该放在等号右边
+//    private static Employee[] employee = new Employee[2];  //数组的大小数字应该放在等号右边
 
     //测试数据
     static {
-        employee[0]=new Employee(1,"张三",18,"23-9","开发部","员工",5000);
-        employee[1]=new Employee(2,"李四",23,"23-8","维护部","经理",15000);
-        allEmployee.add(employee[0]);
-        allEmployee.add(employee[1]);
+
+        allEmployee.add(new Employee(1,"张三",18,"23-9","开发部","员工",5000));
+        allEmployee.add(new Employee(2,"李四",23,"23-8","维护部","经理",15000));
 
     }
 
@@ -36,6 +35,7 @@ public class EmployeeManagementUI extends JFrame {
     }
 
     public EmployeeManagementUI(User user) {
+        this.user=user;
         // 1. 初始化窗口基本属性
         setTitle("员工信息管理系统" + "\t" + "登陆人:" + user.getName());
         setSize(800, 600);
@@ -233,7 +233,7 @@ public class EmployeeManagementUI extends JFrame {
         int confirm = JOptionPane.showConfirmDialog(this, "确定要删除该员工信息吗？", "删除确认", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             tableModel.removeRow(modelRow);
-            allEmployee.remove(selectedRow);
+            allEmployee.remove(modelRow);
             JOptionPane.showMessageDialog(this, "删除成功！");
         }
     }

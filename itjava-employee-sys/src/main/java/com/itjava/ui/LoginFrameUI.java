@@ -186,7 +186,6 @@ public class LoginFrameUI extends JFrame implements ActionListener {
         // ------------------------------
         // 7. 登录事件
         // ------------------------------
-        loginButton.addActionListener(e -> login());
 
         passwordField.addActionListener(e -> login());
 
@@ -241,17 +240,17 @@ public class LoginFrameUI extends JFrame implements ActionListener {
                  new EmployeeManagementUI(user);
                  //再关闭当前登录窗口
                  this.dispose();
+             }else {
+
+                 JOptionPane.showMessageDialog(
+                         this,
+                         "用户名或密码错误！",
+                         "登录失败",
+                         JOptionPane.ERROR_MESSAGE
+                 );
              }
 
 
-        } else {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "用户名或密码错误！",
-                    "登录失败",
-                    JOptionPane.ERROR_MESSAGE
-            );
         }
     }
 
@@ -260,7 +259,7 @@ public class LoginFrameUI extends JFrame implements ActionListener {
     private User getUserLoginName(String loginName){
         for (int i = 0; i< allUser.size(); i++){
             User user = allUser.get(i);
-            if(user.getLoginname().equals(loginName)){
+            if(user.getLoginName().equals(loginName)){
                 return user;
             }
         }
@@ -339,6 +338,7 @@ public class LoginFrameUI extends JFrame implements ActionListener {
         JButton btn =(JButton) e.getSource(); //getSource()取按钮
         if (btn == loginButton){
             System.out.println("点击了登录事件");
+            login();
         }
     }
 
