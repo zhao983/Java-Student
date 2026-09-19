@@ -1,0 +1,20 @@
+组件	       作用	常见场景
+JFrame	主窗口	登录窗口、管理系统窗口
+JPanel	面板容器	分区域放组件
+JLabel	显示文字/图片	“用户名”、标题、提示语
+JButton	按钮	登录、确认、删除
+JTextField	单行文本框	用户名、搜索框
+JPasswordField	密码框	输入密码
+JTextArea	多行文本框	留言、备注、文章内容
+JCheckBox	复选框	记住密码、多选
+JRadioButton	单选按钮	性别、选项三选一
+JComboBox	下拉框	选择城市、部门
+JList	列表	显示一组选项
+JTable	表格	员工管理、学生信息
+JScrollPane	滚动面板	给表格、文本区加滚动条
+JMenuBar / JMenu	菜单栏	文件、编辑、帮助
+JOptionPane	弹窗	提示、警告、确认
+JSlider	滑块	音量、进度值
+JProgressBar	进度条	下载进度
+JSpinner	数值微调框	年龄、数量
+JTabbedPane	标签页	多页面切换
