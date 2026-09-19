@@ -150,22 +150,35 @@ public class MainFrame extends JFrame {
         //加到菜单上
         menu.add(exitJi);
         JMenuItem restartJi = new JMenuItem("重启");  //重启
-        restartJi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //重启要求二维数组重新刷新加重新显示页面
-                initRandomArray(imageData,200);
-                initImage();
-                //重启后步数设为0
-                count = 0;
-            }
-        });
+        restartJi.addActionListener(e -> restartGame());
         menu.add(restartJi);
         //将菜单加到按钮条上
         jMenuBar.add(menu);
         //按钮条设置到窗口上
         this.setJMenuBar(jMenuBar);
 
+    }
+
+    //重启实现
+    private void restartGame() {
+        // 恢复标准棋盘
+        for (int i = 0; i < WIN_DATA.length; i++) {
+            System.arraycopy(
+                    WIN_DATA[i], 0,
+                    imageData[i], 0,
+                    WIN_DATA[i].length
+            );
+        }
+
+        row = 3;
+        col = 3;
+        count = 0;
+
+        // 从标准棋盘出发，进行合法移动
+        initRandomArray(imageData, 200);
+
+        // 最后更新显示
+        initImage();
     }
 
     //4.打乱色块
@@ -204,6 +217,7 @@ public class MainFrame extends JFrame {
     private void initRandomArray(int[][] imageData, int steps) {
 
         // 初始空格位置
+
         int emptyRow = 3;
         int emptyCol = 3;
 
