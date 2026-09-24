@@ -29,7 +29,7 @@ public class ExceptionDemo1 {
         //编译时异常，编译阶段报错，编译不通过
         String str = "2025-09-08 11:25:15";
         //把字符串中的事件解析为Java中的一个简单的日期对象
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");  //上下格式必须一样
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  //上下格式必须一样
         //解析 parse() 将String字符串转换为Date对象  格式化 format() 将Date对象格式化为String字符串
         Date date = sdf.parse(str);  //编译时异常，提醒程序员这里的程序很容易出错，请注意
         System.out.println(date);

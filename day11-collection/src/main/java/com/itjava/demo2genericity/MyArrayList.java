@@ -11,14 +11,12 @@ public class MyArrayList<E> {
     private ArrayList list = new ArrayList<>();
 
     //把要操作的元素类型用E表示
-    public boolean myAdd(E e){
-        list.add(e);
-        return true;
+    public boolean myAdd(E e) {
+        return list.add(e);
     }
 
-    public boolean myRemove(E e){
-        list.remove(e);
-        return true;
+    public boolean myRemove(E e) {
+        return list.remove(e);
     }
 
     public String mytoString() {

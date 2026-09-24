@@ -3,7 +3,8 @@ package com.itjava.demo1exception;
 /*
  * 自定义编译时异常
  * 1.继承父类Exception
- * 2.重写父类Exception的构造器
+ * 2.调用写父类Exception的构造器
+ * 构造器不能被继承，也不能被重写。 这里是在自定义构造器中通过 super(message) 调用父类构造器。
  * */
 public class ExceptionDemo3 {
     public static void main(String[] args) {

@@ -13,7 +13,7 @@ public class GenericDemo6 {
         //java中缓存了-128到127 之间的数据
         Integer it2 = Integer.valueOf(100);
         System.out.println(it1 == it2);  //输出true
-        //超过130才会重新开辟空间
+        //超过-128到127才会重新开辟空间
         Integer it3 = Integer.valueOf(130);
         Integer it4 = Integer.valueOf(130);
         System.out.println(it3 == it4);  //输出false 地址不一样

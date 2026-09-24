@@ -38,34 +38,34 @@ public class MovieService {
     private void operation() {
         while (true) {
             show();
-            int i = sc.nextInt();
+            String i = sc.next();
             //需要设计选择的实现
             switch (i) {
-                case 1:
+                case "1":
                     //1.上架电影
                     addMovie();  //独立功能独立成方法
                     break;
-                case 2:
+                case "2":
                     //2.查询电影
                     queryMovie();
                     break;
-                case 3:
+                case "3":
                     //3.下架某部电影
                     deleteMovie();
                     break;
-                case 4:
+                case "4":
                     //4.下架某个主演参演的全部电影
                     deleteActorMovie();
                     break;
-                case 5:
+                case "5":
                     //5.展示全部电影
                     showAllMovie();
                     break;
-                case 6:
+                case "6":
                     //6.修改某部电影信息
                     changeMovie();
                     break;
-                case 7:
+                case "7":
                     return;
                 default:
                     System.out.println("输入有误！");
