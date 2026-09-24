@@ -1,0 +1,4 @@
+package com.itjava.demo3genericity;
+
+public class Teacher {
+}
