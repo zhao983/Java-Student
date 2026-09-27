@@ -19,7 +19,7 @@ public class Room {
             }
             level++;
         }
-        Collections.addAll(cards, new Card("", "大王",++level), new Card("", "小王",++level));
+        Collections.addAll(cards, new Card("", "小王",++level), new Card("", "大王",++level));
     }
 
     public void startGame() {
@@ -57,15 +57,9 @@ public class Room {
         int r = (int) (Math.random() * plays.size());
         System.out.println(r);
         switch (r) {
-            case 1:
-                play1Cards.addAll(lastCards);
-                break;
-            case 2:
-                play2Cards.addAll(lastCards);
-                break;
-            case 3:
-                play3Cards.addAll(lastCards);
-                break;
+            case 0 -> play1Cards.addAll(lastCards);
+            case 1 -> play2Cards.addAll(lastCards);
+            case 2 -> play3Cards.addAll(lastCards);
         }
 
         //给各自卡牌排序  根据卡牌等级排序

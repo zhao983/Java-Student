@@ -48,7 +48,7 @@ public class StreamDemo4 {
 
         //收集到数组
         System.out.println("-------收集到数组------");
-        Object[] objects = list.toArray();
+        Object[] objects = list.stream().toArray();
         System.out.println(Arrays.toString(objects));
 
         //收集到List集合
