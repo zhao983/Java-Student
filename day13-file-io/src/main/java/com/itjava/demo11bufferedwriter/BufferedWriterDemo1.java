@@ -1,4 +1,4 @@
-package com.itjava.demo10bufferedwriter;
+package com.itjava.demo11bufferedwriter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -11,7 +11,7 @@ public class BufferedWriterDemo1 {
         try (
                 //定义一个字符输出流对象，指定写出的目的地
 //                Writer fw = new FileWriter("day13-file-io/test/5.txt");  //覆盖式通道
-                Writer fw = new FileWriter("day13-file-io/test/5.txt",true);  //覆盖式通道
+                Writer fw = new FileWriter("day13-file-io/test/5.txt",true);  //非覆盖式通道 追加到文件最后面
                 BufferedWriter bw = new BufferedWriter(fw);
         ){
 

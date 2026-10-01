@@ -1,4 +1,4 @@
-package com.itjava.demo11printstream;
+package com.itjava.demo13printstream;
 
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;

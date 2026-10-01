@@ -1,4 +1,4 @@
-package com.itjava.demo10bufferedwriter;
+package com.itjava.demo11bufferedwriter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

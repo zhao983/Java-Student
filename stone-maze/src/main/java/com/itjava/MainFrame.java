@@ -104,6 +104,7 @@ public class MainFrame extends JFrame {
             //把当前步数与最小步数做比较，把小的写进去
             //如果当前步数是0，则证明还没有进行过游戏,把本局游戏步数写入，如果当前步数小于最小步数，也应该写入
             if (minCount == 0 || count < minCount) {
+                minCount = count;  //文件里的最少步数 ≠ 程序内存里的最少步数 
                 writeMinCount(count);
             }
 
@@ -115,11 +116,11 @@ public class MainFrame extends JFrame {
         this.add(countJLabel);
 
         //显示最小步数 如果还没有进行过游戏，即minCount==0，则显示还未进行游戏
-        if(minCount==0){
+        if (minCount == 0) {
             JLabel minCountJLabel = new JLabel("还未进行过游戏");
             minCountJLabel.setBounds(300, 0, 100, 20);
             this.add(minCountJLabel);
-        }else {
+        } else {
             JLabel minCountJLabel = new JLabel("最小步数:" + minCount + "步");
             minCountJLabel.setBounds(300, 0, 100, 20);
             this.add(minCountJLabel);
@@ -411,7 +412,7 @@ public class MainFrame extends JFrame {
                 BufferedWriter bw = new BufferedWriter(fw);
         ) {
             //要写一个字符串过去
-            bw.write(count+"");
+            bw.write(count + "");
         } catch (Exception e) {
             e.printStackTrace();
         }
