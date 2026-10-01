@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +27,14 @@ public class MainFrame extends JFrame {
             {9, 10, 11, 12},
             {13, 14, 15, 0}
     };
+    //测试矩阵
+    private static final int[][] TEST_DATA = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 0, 15}
+    };
+
     //图片路径
     private static final String IMAGE_PATH = "stone-maze/src/main/java/images";
     //空白色块位置
@@ -44,6 +53,9 @@ public class MainFrame extends JFrame {
             {0, -1},
             {0, 1}
     };
+
+    //定义一个变量记录最小步数
+    int minCount = readMinCount();
 
     public MainFrame() {
         //1.定义一个方法，初始化窗口大小等信息
@@ -85,9 +97,15 @@ public class MainFrame extends JFrame {
             JLabel win = new JLabel();
             win.setIcon(new ImageIcon(IMAGE_PATH + "\\" + "win.png"));  //给图片的时候要再 new 一下
             //设置显示的位置
-            win.setBounds(124,230,266,88);
+            win.setBounds(124, 230, 266, 88);
             //把这个加到当前窗口上
             this.add(win);
+
+            //把当前步数与最小步数做比较，把小的写进去
+            //如果当前步数是0，则证明还没有进行过游戏,把本局游戏步数写入，如果当前步数小于最小步数，也应该写入
+            if (minCount == 0 || count < minCount) {
+                writeMinCount(count);
+            }
 
         }
 
@@ -95,6 +113,18 @@ public class MainFrame extends JFrame {
         JLabel countJLabel = new JLabel("当前移动" + count + "步");
         countJLabel.setBounds(0, 0, 100, 20);
         this.add(countJLabel);
+
+        //显示最小步数 如果还没有进行过游戏，即minCount==0，则显示还未进行游戏
+        if(minCount==0){
+            JLabel minCountJLabel = new JLabel("还未进行过游戏");
+            minCountJLabel.setBounds(300, 0, 100, 20);
+            this.add(minCountJLabel);
+        }else {
+            JLabel minCountJLabel = new JLabel("最小步数:" + minCount + "步");
+            minCountJLabel.setBounds(300, 0, 100, 20);
+            this.add(minCountJLabel);
+        }
+
 
         //展示一个行列矩阵显示图片
         for (int i = 0; i < imageData.length; i++) {
@@ -120,7 +150,6 @@ public class MainFrame extends JFrame {
 
         //重新绘制页面
         this.repaint();
-
 
 
     }
@@ -255,6 +284,9 @@ public class MainFrame extends JFrame {
             emptyCol = newCol;
         }
 
+        //测试使用
+//        MainFrame.imageData = TEST_DATA;
+
         //得到空白色块的行列索引
         OUT:
         //声明
@@ -289,6 +321,9 @@ public class MainFrame extends JFrame {
 
     //写一个方法来控制上下左右按键的反应(交换按键控制的图片)
     private void switchAndMove(Direction direction) {
+        if (isWin()) {
+            return;
+        }
         switch (direction) {
             case UP:
                 System.out.println("用户点击了上");
@@ -350,6 +385,36 @@ public class MainFrame extends JFrame {
 
         //执行完毕交换后重新绘制页面
         initImage();
+    }
+
+    //写一个读取文件中最小步数的方法
+    private int readMinCount() {
+        try (
+                //定义一个字节输入流
+                Reader fr = new FileReader("stone-maze/src/main/minCount.txt");
+                BufferedReader br = new BufferedReader(fr);
+        ) {
+            String line;
+            line = br.readLine();
+            return Integer.parseInt(line);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    //写一个写入数据的方法
+    private void writeMinCount(int count) {
+        try (
+                //定义字符输入流
+                Writer fw = new FileWriter("stone-maze/src/main/minCount.txt");
+                BufferedWriter bw = new BufferedWriter(fw);
+        ) {
+            //要写一个字符串过去
+            bw.write(count+"");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
