@@ -9,6 +9,7 @@ public class ThreadApiDemo1 {
         System.out.println(t1.getName());  //得到线程名字
 
         Thread t2 =new Thread();
+        t2.start();
 
         //哪个线程调用这个方法。就拿到哪个线程
         Thread m = Thread.currentThread();

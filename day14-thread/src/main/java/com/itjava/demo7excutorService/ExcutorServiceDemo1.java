@@ -57,6 +57,11 @@ class MyThread extends Thread {
     public void run() {
         for (int i = 0; i < 10; i++) {
             System.out.println(Thread.currentThread().getName()+"子线程运行" + i);
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 }

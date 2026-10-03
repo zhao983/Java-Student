@@ -2,6 +2,7 @@ package com.itjava.demo8test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ThreadTest {
     public static void main(String[] args) {
@@ -30,13 +31,21 @@ public class ThreadTest {
         // 其中小红包在[1 - 30] 元之间，总占比为80%，
         for (int i = 0; i < 160; i++) {
             // 存储时四舍五入
-            double money = Math.round((1 + Math.random() * 30) * 100) / 100.0;
+            // 1.00 ~ 30.00
+            int cents = ThreadLocalRandom.current()
+                    .nextInt(100, 3001);
+
+            double money = cents / 100.0;
             redPacket.add(money);
         }
 
         // 大红包[31-100]元，总占比为20%。
         for (int i = 160; i < 200; i++) {
-            double money = Math.round((31 + Math.random() * 70) * 100) / 100.0;
+            // 1.00 ~ 30.00
+            int cents = ThreadLocalRandom.current()
+                    .nextInt(3100, 10001);
+
+            double money = cents / 100.0;
             redPacket.add(money);
         }
 
