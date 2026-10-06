@@ -51,10 +51,18 @@ public class ServiceReader extends Thread{
         }catch (Exception e) {
             //当客户端下线的时候,把这个客户端管道从Map集合中抹去,并再次更新在线列表
             System.out.println("客户端下线了"+socket.getInetAddress().getHostAddress()+"\t"+socket.getPort());
-            Server.onLineSocket.remove(socket);
-            updateOnlineUserList();
 
+        }finally {
+            Server.onLineSocket.remove(socket);
+            try {
+                socket.close();
+            } catch (Exception ignored) {
+            }
+
+            updateOnlineUserList();
         }
+
+//
     }
 
     private void sendMsgToAll(String msg){
@@ -65,21 +73,38 @@ public class ServiceReader extends Thread{
         String nowStr = dtf.format(now).toString();
 
         StringBuilder sb = new StringBuilder();
-        String append = sb.append(Server.onLineSocket.values()).append("\t").append(nowStr).append("\n")
+        //                           这样得到的是全部的在线人员名字
+//        String append = sb.append(Server.onLineSocket.values()).append("\t").append(nowStr).append("\n")
+//                .append(msg).append("\n").toString();
+
+        //                                  这样可以得到当前成员名字
+        String append = sb.append(Server.onLineSocket.get(this.socket)).append("\t").append(nowStr).append("\n")
                 .append(msg).append("\n").toString();
 
         //再把这些信息推送给所有的在线管道
         for(Socket socket : Server.onLineSocket.keySet()){
 
             try {
-                DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-                //先写要发出去的数据类型
-                dos.writeInt(2);  //2 代表群聊消息
-                //进行发送
-                dos.writeUTF(append);
+//                DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+//                //先写要发出去的数据类型
+//                dos.writeInt(2);  //2 代表群聊消息
+//                //进行发送
+//                dos.writeUTF(append);
+//
+//                //发送完毕后刷新
+//                dos.flush();
+                //保证：
+                //一条协议消息写完之前，另一个线程不能插进来写。 防止有人发消息和别人登录的时候出现错误
+                synchronized (socket) {
+                    DataOutputStream dos =
+                            new DataOutputStream(
+                                    socket.getOutputStream()
+                            );
 
-                //发送完毕后刷新
-                dos.flush();
+                    dos.writeInt(2);
+                    dos.writeUTF(append);
+                    dos.flush();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

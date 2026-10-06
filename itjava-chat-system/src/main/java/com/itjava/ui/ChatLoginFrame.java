@@ -71,18 +71,41 @@ public class ChatLoginFrame extends JFrame {
 
                 // TODO: 这里可以进入后续的 Socket 连接逻辑
                 // 例如：new ChatRoomFrame(nickname).setVisible(true);
-                JOptionPane.showMessageDialog(ChatLoginFrame.this, "欢迎进入聊天室：" + nickname);
+//                JOptionPane.showMessageDialog(ChatLoginFrame.this, "欢迎进入聊天室：" + nickname);
                 //进入聊天室逻辑
+//                try {
+//                    //登录
+//                    login(nickname);
+//                    //启动聊天页面
+//                    new ChatRoomFrame(nickname,socket);
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//                // 登录成功后关闭当前界面
+//                dispose();
+//                //登录失败后窗口仍然会关闭
+
                 try {
-                    //登录
                     login(nickname);
-                    //启动聊天页面
-                    new ChatRoomFrame(nickname,socket);
+
+                    JOptionPane.showMessageDialog(
+                            ChatLoginFrame.this,
+                            "欢迎进入聊天室：" + nickname
+                    );
+
+                    new ChatRoomFrame(nickname, socket);
+
+                    dispose();
+
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+
+                    JOptionPane.showMessageDialog(
+                            ChatLoginFrame.this,
+                            "连接服务器失败，请确认服务端是否启动！",
+                            "连接失败",
+                            JOptionPane.ERROR_MESSAGE
+                    );
                 }
-                // 登录成功后关闭当前界面
-                dispose();
             }
         });
 

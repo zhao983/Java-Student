@@ -21,6 +21,8 @@ public class ChatRoomFrame extends JFrame {
     private DefaultListModel<String> userListModel;
     public JList<String> userList;
 
+    private DataOutputStream dos;
+
 
     // 当前昵称
     private String nickname;
@@ -145,7 +147,10 @@ public class ChatRoomFrame extends JFrame {
         // 2. TODO: 这里对接你的 Socket 代码，将 msg 发送给服务器
         //从socket管道获取一个特殊数据输出流
         try {
-            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+//            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+            //DataOutputStream 不建议每发一次消息就重新 new
+
+            dos = new DataOutputStream(socket.getOutputStream());
             dos.writeInt(2); //表示发送的是群聊消息
             dos.writeUTF(msg);
             dos.flush(); //刷新
@@ -192,7 +197,9 @@ public class ChatRoomFrame extends JFrame {
      */
     public void updateUserCount(String[] names) {
         //把线程读取到的名称展示到页面上
-        userList.setListData(names);
+        SwingUtilities.invokeLater(() -> {
+            userList.setListData(names);
+        });
     }
 
 
