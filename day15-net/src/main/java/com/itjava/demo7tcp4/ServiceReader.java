@@ -3,7 +3,7 @@ package com.itjava.demo7tcp4;
 import java.io.*;
 import java.net.Socket;
 
-public class ServiceReader extends Thread{
+public class ServiceReader extends Thread implements Runnable{
     private Socket socket;
 
     public ServiceReader(Socket socket) {

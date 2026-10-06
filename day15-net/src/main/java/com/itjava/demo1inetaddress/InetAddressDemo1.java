@@ -12,7 +12,7 @@ public class InetAddressDemo1 {
             System.out.println(ip1.getHostAddress()); //得到IP信息
 
             //获取对方IP对象
-            InetAddress ip2 = InetAddress.getByName("ww.baidu.com");
+            InetAddress ip2 = InetAddress.getByName("www.baidu.com");
             System.out.println(ip2.getHostName());
             System.out.println(ip2.getHostAddress());
 

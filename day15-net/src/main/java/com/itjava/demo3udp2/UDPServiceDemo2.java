@@ -14,6 +14,7 @@ public class UDPServiceDemo2 {
         DatagramPacket packet = new DatagramPacket(buffers, buffers.length);
 
         while (true) {
+            packet.setLength(buffers.length);
             //3.让接受端对象接受数据包数据
             socket.receive(packet);
 

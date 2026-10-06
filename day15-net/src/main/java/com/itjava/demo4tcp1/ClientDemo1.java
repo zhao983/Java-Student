@@ -19,6 +19,5 @@ public class ClientDemo1 {
         dos.writeInt(1);
         dos.writeUTF("这里是客户端");
 
-        //4.关闭资源
     }
 }
