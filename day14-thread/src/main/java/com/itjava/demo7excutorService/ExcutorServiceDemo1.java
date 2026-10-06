@@ -2,6 +2,12 @@ package com.itjava.demo7excutorService;
 
 import java.util.concurrent.*;
 
+/*线程池作用
+降低资源消耗：通过重复利用已创建的线程，减少线程创建和销毁的开销。
+提高响应速度：任务可以立即执行，无需等待线程创建。
+提高线程的可管理性：统一管理线程，便于监控和调优。
+避免内存溢出：通过限制线程数量，防止系统资源耗尽。
+支持并发编程：在并发环境中，线程池可以有效管理多个线程的执行。*/
 public class ExcutorServiceDemo1 {
     public static void main(String[] args) {
         //目标：创建线程池对象来使用
@@ -65,3 +71,5 @@ class MyThread extends Thread {
         }
     }
 }
+
+
