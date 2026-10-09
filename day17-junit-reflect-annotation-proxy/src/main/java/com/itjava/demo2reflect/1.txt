@@ -1,0 +1,7 @@
+===========Student============
+name=张三
+sex=男
+===========Teacher============
+name=李四
+hobby=看书
+sex=null
