@@ -64,7 +64,7 @@ public class ReflectDemo2 {
         }
         System.out.println("------------------");
         //获得单个成员变量
-        Field field = c1.getDeclaredField("name");
+        Field field = c1.getDeclaredField("sex");
         System.out.println("成员变量的名字：" + field.getName() + "\t" + "成员变量的类型名字：" + field.getType().getName());
         System.out.println("------------------");
 
